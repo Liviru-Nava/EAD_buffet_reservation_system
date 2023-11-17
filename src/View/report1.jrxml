@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="700" pageHeight="842" columnWidth="660" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d141b7f5-fffa-4ee3-98ab-0949e02a47f6">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="PieChart" uuid="65cf8024-1156-4efc-a038-7352207cc708">
+		<queryString language="SQL">
+			<![CDATA[SELECT buffet_name, SUM(total_fee), SUM(num_of_guests)
+from tbl_reservation
+group by buffet_name;]]>
+		</queryString>
+		<field name="buffet_name" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="SUM(total_fee)" class="java.math.BigDecimal"/>
+		<field name="SUM(num_of_guests)" class="java.math.BigDecimal"/>
+	</subDataset>
+	<queryString language="SQL">
+		<![CDATA[SELECT R.buffet_name, (SELECT customer_name FROM tbl_customer WHERE customer_telephone = R.customer_telephone) as customer_name, R.date, R.num_of_guests, 
+R.total_fee
+FROM tbl_reservation R
+JOIN tbl_buffet B
+ON R.buffet_name = B.buffet_name]]>
+	</queryString>
+	<field name="buffet_name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="customer_name" class="java.lang.String"/>
+	<field name="date" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="num_of_guests" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="total_fee" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="total_revenue" class="java.lang.Integer" resetType="Group" resetGroup="buffet_name" calculation="Sum">
+		<variableExpression><![CDATA[$F{total_fee}]]></variableExpression>
+	</variable>
+	<variable name="total_number_of_guests" class="java.lang.Integer" resetType="Group" resetGroup="buffet_name" calculation="Sum">
+		<variableExpression><![CDATA[$F{num_of_guests}]]></variableExpression>
+	</variable>
+	<variable name="grand_total_revenue" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$V{total_revenue}]]></variableExpression>
+	</variable>
+	<variable name="grand_total_guests" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$V{total_number_of_guests}]]></variableExpression>
+	</variable>
+	<group name="buffet_name">
+		<groupExpression><![CDATA[$F{buffet_name}]]></groupExpression>
+		<groupHeader>
+			<band height="83">
+				<rectangle>
+					<reportElement x="0" y="48" width="660" height="35" backcolor="#006666" uuid="d5431bff-8173-4aed-89c1-ef919a0ed190"/>
+				</rectangle>
+				<rectangle>
+					<reportElement x="0" y="0" width="660" height="48" backcolor="#003333" uuid="a6e19970-2531-45f0-9b2b-28fdffda23f2"/>
+				</rectangle>
+				<textField>
+					<reportElement x="15" y="11" width="632" height="37" forecolor="#FFFFFF" uuid="4260e11b-bb9b-4104-8602-021edd76c82b"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="20" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{buffet_name}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="195" y="54" width="152" height="20" forecolor="#FFFFFF" uuid="7e70fb47-65f6-4d19-93f3-aef4e0fff036"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Date of Reservation]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="16" y="54" width="152" height="20" forecolor="#FFFFFF" uuid="8f8a7890-804a-4637-a362-f46f096f18a3"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Customer Name]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="376" y="54" width="135" height="20" forecolor="#FFFFFF" uuid="b339d4b0-fa78-497e-a602-70fec9fb8e11"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Number of guests]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="547" y="54" width="100" height="20" forecolor="#FFFFFF" uuid="36abfafb-5c56-4e79-ac8c-31295be6d366"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Total fee]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="40">
+				<rectangle>
+					<reportElement x="0" y="0" width="660" height="39" backcolor="#6666FF" uuid="7e906f01-ddc3-4f47-9898-66c1fa56608b"/>
+				</rectangle>
+				<staticText>
+					<reportElement x="375" y="7" width="136" height="20" forecolor="#FFFFFF" uuid="be8e371d-9da5-47a8-a8b9-dddd2d165c15"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Total Revenue per type]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="517" y="7" width="143" height="20" forecolor="#FFFFFF" uuid="b715401c-39ad-4b8d-98a5-2e4e08ebf257"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{total_revenue}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="7" width="151" height="20" forecolor="#FFFFFF" uuid="37d9133b-af02-4fc4-b165-2f1a51ea63ef"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Total number of guests per type]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="195" y="7" width="152" height="20" forecolor="#FFFFFF" uuid="399580d6-3bf5-4820-a58c-fc9816ee51be"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{total_number_of_guests}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="331" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="660" height="331" backcolor="#99FFCC" uuid="5284849c-c052-4a2a-84e4-bb3cc0524d8a"/>
+			</rectangle>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="15" y="9" width="180" height="20" uuid="63b0eb4c-7736-4c9c-8041-5257e12450ab"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="109" y="41" width="426" height="62" uuid="93b4c05c-9d82-451c-ba47-430617417cb1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Baskerville Old Face" size="26" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CINNAMON CLASSIC RESORTS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="251" y="103" width="157" height="20" uuid="bcfd6af8-3ea7-412a-8660-0ff8daa9e8a4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Revenue Report]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="70" y="295" width="214" height="20" uuid="d704aa0f-b388-4c9c-9080-d52db2f54956"/>
+				<textElement>
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Figure indicates total revenue per buffet type]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="376" y="296" width="258" height="20" uuid="474a99ef-a49b-4564-a4d0-1f2f18a58d41"/>
+				<textElement>
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Figure indicates total number of guests per buffet type]]></text>
+			</staticText>
+			<pieChart>
+				<chart evaluationTime="Report">
+					<reportElement x="0" y="139" width="328" height="146" uuid="711fcfda-31c1-414e-a6ce-8c52a20af749"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<dataset>
+						<datasetRun subDataset="PieChart" uuid="98310f35-d4e2-470b-8ed4-d662038a26bb"/>
+					</dataset>
+					<keyExpression><![CDATA[$F{buffet_name}]]></keyExpression>
+					<valueExpression><![CDATA[$F{SUM(total_fee)}]]></valueExpression>
+				</pieDataset>
+				<piePlot>
+					<plot/>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
+			<pieChart>
+				<chart evaluationTime="Report">
+					<reportElement x="347" y="139" width="313" height="146" uuid="d0cc45c8-7028-48b3-a142-f5c89740495f"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<dataset>
+						<datasetRun subDataset="PieChart" uuid="02abebfe-0749-4c8a-a91f-a8199431b3fb"/>
+					</dataset>
+					<keyExpression><![CDATA[$F{buffet_name}]]></keyExpression>
+					<valueExpression><![CDATA[$F{SUM(num_of_guests)}]]></valueExpression>
+				</pieDataset>
+				<piePlot>
+					<plot/>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
+			<image>
+				<reportElement x="564" y="11" width="85" height="90" uuid="3710f0cb-7f2d-4006-ba10-68f88107b6a5"/>
+				<imageExpression><![CDATA["C:\\Users\\ASUS\\Downloads\\Cinnamon-removebg-preview.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="46" splitType="Stretch">
+			<textField>
+				<reportElement x="16" y="5" width="135" height="20" uuid="8a90b322-7308-4b2f-89b8-7d218fc24ab3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{customer_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="195" y="5" width="152" height="20" uuid="a420c41e-5418-4c1a-abd5-237fe2d52aae"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="376" y="5" width="133" height="20" uuid="a5e3c1ed-7ec5-4913-9d65-4f52d8f3b712"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{num_of_guests}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="547" y="5" width="100" height="20" uuid="c4fe249c-0555-4274-9ccb-8ae13eed9b75"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total_fee}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="29" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="660" height="29" backcolor="#3333FF" uuid="5052a1e0-6c03-4cb0-a221-389e17708fbb"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="376" y="0" width="133" height="20" forecolor="#FFFFFF" uuid="7338446f-63df-430b-bea7-f199ab6737da"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Grand Total Revenue]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="517" y="0" width="143" height="20" forecolor="#FFFFFF" uuid="0bb6bcf4-a892-4246-a3d1-590afd454587"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{grand_total_revenue}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="172" height="20" forecolor="#FFFFFF" uuid="c1ac0149-88c3-43d5-9821-cb59a21964fd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Grand Total number of guests]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="195" y="0" width="133" height="20" forecolor="#FFFFFF" uuid="a6286bcf-40f5-4dd5-8176-b3ed65a23408"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{grand_total_guests}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="44" splitType="Stretch">
+			<textField>
+				<reportElement x="560" y="24" width="100" height="20" uuid="0569ea08-d97c-492e-94b5-6326a3639f9b"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
