@@ -268,7 +268,7 @@ public class VLoginPage extends javax.swing.JFrame{
             if(password.isBlank())
             {
                 lbl_password_required.setText("**Required!");
-                //lbl_username_required.setForeground(Color.red);
+                lbl_username_required.setForeground(Color.red);
             }
         }
         else if(usertype == null)
