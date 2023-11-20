@@ -671,6 +671,7 @@ public class VReservationPage extends javax.swing.JFrame {
         String time_slot = txt_time_slot.getText();
         
         loadTableToComboBox(date_of_reservation, time_slot, number_of_guests);
+        btn_save_reservation_details.setEnabled(true);
     }//GEN-LAST:event_txt_number_of_guestsStateChanged
 
     private void btn_save_reservation_detailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_save_reservation_detailsActionPerformed
@@ -790,6 +791,7 @@ public class VReservationPage extends javax.swing.JFrame {
             btn_paynow.setEnabled(false);
         }
         btn_save_reservation_details.setEnabled(false);
+        displayReservationToTable();
         getAutoId();
     }//GEN-LAST:event_btn_paynowActionPerformed
 
