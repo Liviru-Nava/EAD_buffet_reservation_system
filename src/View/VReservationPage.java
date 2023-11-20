@@ -1052,8 +1052,8 @@ public class VReservationPage extends javax.swing.JFrame {
             txt_customer_email.setText(customer_email);
             txt_customer_name.setText(customer_name);
             
-            txt_customer_email.setEditable(false);
-            txt_customer_name.setEditable(false);
+            txt_customer_email.setEditable(true);
+            txt_customer_name.setEditable(true);
             
             date_reservation_date.setEnabled(true);
         }    
