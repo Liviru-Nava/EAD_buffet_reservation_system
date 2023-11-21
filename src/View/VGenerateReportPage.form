@@ -90,7 +90,7 @@
                               <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="btn_generate_daily_report" max="32767" attributes="0"/>
-                                  <Component id="jButton1" max="32767" attributes="0"/>
+                                  <Component id="btn_generate_monthly_report" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -117,7 +117,7 @@
                           <Component id="date_from_date" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" pref="56" max="-2" attributes="0"/>
+                      <Component id="btn_generate_monthly_report" min="-2" pref="56" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       <Component id="btn_generate_daily_report" min="-2" pref="56" max="-2" attributes="0"/>
                       <EmptySpace pref="449" max="32767" attributes="0"/>
@@ -184,7 +184,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_generate_daily_reportActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="btn_generate_monthly_report">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="1"/>
@@ -192,7 +192,7 @@
                 <Property name="text" type="java.lang.String" value="Generate Monthly Revenue Report"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_generate_monthly_reportActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_back_button">

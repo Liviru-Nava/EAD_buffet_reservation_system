@@ -14,6 +14,7 @@ import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import java.sql.*;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -55,11 +56,6 @@ public class VGenerateReportPage extends javax.swing.JFrame {
         
         SimpleDateFormat toDate = new SimpleDateFormat("yyyy-MM-dd");
         String to_date1 = toDate.format(date_to_date.getDate());
-        
-        /*HashMap a = new HashMap();
-        a.put("from_date", from_date1);
-        a.put("to_date", to_date1);*/
-        
         
         
         try {
@@ -107,7 +103,7 @@ public class VGenerateReportPage extends javax.swing.JFrame {
         date_to_date = new com.toedter.calendar.JDateChooser();
         date_from_date = new com.toedter.calendar.JDateChooser();
         btn_generate_daily_report = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btn_generate_monthly_report = new javax.swing.JButton();
         btn_back_button = new javax.swing.JButton();
         panel_load_report = new javax.swing.JPanel();
 
@@ -146,11 +142,11 @@ public class VGenerateReportPage extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton1.setText("Generate Monthly Revenue Report");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_generate_monthly_report.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btn_generate_monthly_report.setText("Generate Monthly Revenue Report");
+        btn_generate_monthly_report.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_generate_monthly_reportActionPerformed(evt);
             }
         });
 
@@ -188,7 +184,7 @@ public class VGenerateReportPage extends javax.swing.JFrame {
                         .addGap(64, 64, 64)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btn_generate_daily_report, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(btn_generate_monthly_report, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -207,7 +203,7 @@ public class VGenerateReportPage extends javax.swing.JFrame {
                     .addComponent(date_to_date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(date_from_date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(67, 67, 67)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_generate_monthly_report, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addComponent(btn_generate_daily_report, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(449, Short.MAX_VALUE))
@@ -235,10 +231,22 @@ public class VGenerateReportPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn_generate_monthly_reportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_generate_monthly_reportActionPerformed
         // TODO add your handling code here:
-        loadReport();
-    }//GEN-LAST:event_jButton1ActionPerformed
+        try {
+            if(date_from_date.getDate()==null || date_to_date.getDate()==null)
+            {
+                JOptionPane.showMessageDialog(null, "Please select a date range!", "error", JOptionPane.ERROR_MESSAGE);
+            }
+            else
+            {
+                loadReport();
+            }
+        } 
+        catch (NullPointerException e) {
+            System.out.println(e.getMessage());
+        }
+    }//GEN-LAST:event_btn_generate_monthly_reportActionPerformed
 
     private void btn_generate_daily_reportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_generate_daily_reportActionPerformed
         // TODO add your handling code here:
@@ -317,9 +325,9 @@ public class VGenerateReportPage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_back_button;
     private javax.swing.JButton btn_generate_daily_report;
+    private javax.swing.JButton btn_generate_monthly_report;
     private com.toedter.calendar.JDateChooser date_from_date;
     private com.toedter.calendar.JDateChooser date_to_date;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
