@@ -69,6 +69,7 @@ public class VReservationPage extends javax.swing.JFrame {
             {
                 checkNameAndEmailFromDatabase();
                 enableCustomerNameField();
+                enableReserveButtonField();
             }
 
             @Override
@@ -76,6 +77,7 @@ public class VReservationPage extends javax.swing.JFrame {
             {
                 checkNameAndEmailFromDatabase();
                 enableCustomerNameField();
+                enableReserveButtonField();
             }
 
             @Override
@@ -83,6 +85,7 @@ public class VReservationPage extends javax.swing.JFrame {
             {
                 checkNameAndEmailFromDatabase();
                 enableCustomerNameField();
+                enableReserveButtonField();
             }
                     
         });
@@ -676,6 +679,7 @@ public class VReservationPage extends javax.swing.JFrame {
 
     private void btn_save_reservation_detailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_save_reservation_detailsActionPerformed
         //CLICK ON SAVE RESERVATION BUTTON
+
         String pattern = "yyyy-MM-dd";
         SimpleDateFormat dateformat = new SimpleDateFormat(pattern);
         
@@ -700,7 +704,6 @@ public class VReservationPage extends javax.swing.JFrame {
             
         }
         
-        
         //CALCULATE TOTAL FEE 
         int total_fee = 0;
         total_fee = number_of_guests * (Integer.parseInt(txt_buffet_price.getText()));
@@ -716,10 +719,9 @@ public class VReservationPage extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(this, "No data is stored!");
         }
-
         //AUTO INCREMENT RESERVATION ID
         displayReservationToTable();
-        
+         
     }//GEN-LAST:event_btn_save_reservation_detailsActionPerformed
 
     private void radio_cardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radio_cardActionPerformed
@@ -832,7 +834,7 @@ public class VReservationPage extends javax.swing.JFrame {
             int telephone = Integer.parseInt(txt_telephone_number2. getText());
             controller.filterTableFromNumber(telephone, table_reservation_details);
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Please enter valid contact number!", "error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please enter the contact number!", "error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_view_reservation_from_numberActionPerformed
 
@@ -1052,8 +1054,8 @@ public class VReservationPage extends javax.swing.JFrame {
             txt_customer_email.setText(customer_email);
             txt_customer_name.setText(customer_name);
             
-            txt_customer_email.setEditable(true);
-            txt_customer_name.setEditable(true);
+            txt_customer_email.setEditable(false);
+            txt_customer_name.setEditable(false);
             
             date_reservation_date.setEnabled(true);
         }    
@@ -1120,6 +1122,7 @@ public class VReservationPage extends javax.swing.JFrame {
             if (dayOfWeek < Calendar.SUNDAY || dayOfWeek > Calendar.THURSDAY) {
             // If the selected date is outside the allowed range, reset the date
             date_reservation_date.setDate(null);
+            JOptionPane.showMessageDialog(null, "Only available from Sunday to Thursday!", "Error", JOptionPane.ERROR_MESSAGE);
         }
         } catch (NullPointerException e) {
             System.out.println(e.getMessage());
@@ -1200,5 +1203,13 @@ public class VReservationPage extends javax.swing.JFrame {
         boolean date = !txt_customer_email.getText().trim().isEmpty();
         date_reservation_date.setEnabled(date);
         date_reservation_date.getDateEditor().setEnabled(false);
+    }
+    public void enableReserveButtonField()
+    {
+        String telephone = txt_telephone_number.getText();
+        if(telephone.length() == 0)
+        {
+            btn_save_reservation_details.setEnabled(false);
+        }
     }
 }

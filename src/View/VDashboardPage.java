@@ -360,7 +360,7 @@ public class VDashboardPage extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 26)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Reservations Today");
+        jLabel1.setText("Reservations Made Today");
 
         lbl_reservation_today.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         lbl_reservation_today.setForeground(new java.awt.Color(255, 255, 255));
@@ -371,13 +371,13 @@ public class VDashboardPage extends javax.swing.JFrame {
         panel_number_of_reservationsLayout.setHorizontalGroup(
             panel_number_of_reservationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_number_of_reservationsLayout.createSequentialGroup()
-                .addGap(77, 77, 77)
-                .addComponent(jLabel1)
-                .addContainerGap(79, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_number_of_reservationsLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbl_reservation_today, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
+            .addGroup(panel_number_of_reservationsLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         panel_number_of_reservationsLayout.setVerticalGroup(
             panel_number_of_reservationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -395,7 +395,7 @@ public class VDashboardPage extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 26)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Number of Guests Today");
+        jLabel2.setText("<html>\n<p>Number of Guests</p>\n<p>Expected Today</p>\n</html>");
 
         lbl_guests_today.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         lbl_guests_today.setForeground(new java.awt.Color(255, 255, 255));
@@ -406,20 +406,22 @@ public class VDashboardPage extends javax.swing.JFrame {
         panel_number_of_guestsLayout.setHorizontalGroup(
             panel_number_of_guestsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_number_of_guestsLayout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addGroup(panel_number_of_guestsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addComponent(lbl_guests_today))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addGap(25, 25, 25)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(97, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_number_of_guestsLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_guests_today)
+                .addGap(51, 51, 51))
         );
         panel_number_of_guestsLayout.setVerticalGroup(
             panel_number_of_guestsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_number_of_guestsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addComponent(lbl_guests_today, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47))
+                .addGap(36, 36, 36))
         );
 
         panel_dashboard_main.add(panel_number_of_guests, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 20, 374, 210));
@@ -428,7 +430,7 @@ public class VDashboardPage extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 26)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Total Revenue Today");
+        jLabel3.setText("Total Revenue Made Today");
 
         lbl_total_revenue_today.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         lbl_total_revenue_today.setForeground(new java.awt.Color(255, 255, 255));
@@ -438,21 +440,21 @@ public class VDashboardPage extends javax.swing.JFrame {
         panel_total_revenue.setLayout(panel_total_revenueLayout);
         panel_total_revenueLayout.setHorizontalGroup(
             panel_total_revenueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_total_revenueLayout.createSequentialGroup()
-                .addContainerGap(74, Short.MAX_VALUE)
-                .addGroup(panel_total_revenueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lbl_total_revenue_today, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(60, 60, 60))
+            .addGroup(panel_total_revenueLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(panel_total_revenueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lbl_total_revenue_today)
+                    .addComponent(jLabel3))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         panel_total_revenueLayout.setVerticalGroup(
             panel_total_revenueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_total_revenueLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(18, 18, 18)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                 .addComponent(lbl_total_revenue_today, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46))
+                .addGap(40, 40, 40))
         );
 
         panel_dashboard_main.add(panel_total_revenue, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 20, -1, 210));

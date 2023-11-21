@@ -40,6 +40,23 @@ public class VLoginPage extends javax.swing.JFrame{
                 checkUsernameFromDatabase();
             }
         });
+        txt_password.getDocument().addDocumentListener(new javax.swing.event.DocumentListener()
+        {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                clearRequiredField();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                clearRequiredField();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                clearRequiredField();
+            }
+        });
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -268,12 +285,17 @@ public class VLoginPage extends javax.swing.JFrame{
             if(password.isBlank())
             {
                 lbl_password_required.setText("**Required!");
-                lbl_username_required.setForeground(Color.red);
+                lbl_password_required.setForeground(Color.red);
             }
         }
         else if(usertype == null)
         {
-           JOptionPane.showMessageDialog(null, "Invalid username and password, please try again!");
+           JOptionPane.showMessageDialog(null, "Invalid username and password, please try again!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        else
+        {
+            lbl_username_required.setText("");
+            lbl_password_required.setText("");
         }
     }//GEN-LAST:event_btn_loginActionPerformed
 
@@ -289,7 +311,10 @@ public class VLoginPage extends javax.swing.JFrame{
         if (isValidInput(inputText)) {
             lbl_username_required.setForeground(Color.green);
             lbl_username_required.setText("Valid character entered");
-        } else {
+        } else if(inputText.length()==0) {
+            lbl_username_required.setForeground(Color.red);
+            lbl_username_required.setText("Field must not be empty!");
+        }else {
             lbl_username_required.setForeground(Color.red);
             lbl_username_required.setText("Invalid character entered");
         }
@@ -374,6 +399,18 @@ public class VLoginPage extends javax.swing.JFrame{
 
     private boolean isValidInput(String inputText) {
         return inputText.matches("[a-zA-Z].*");
+    }
+    public void clearRequiredField()
+    {
+        boolean password = !txt_password.getText().trim().isEmpty();
+        if(password ==true)
+        {
+            lbl_password_required.setText("");
+        }
+        else
+        {
+            lbl_password_required.setText("Required!");
+        }
     }
 
 }

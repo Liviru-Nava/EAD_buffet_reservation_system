@@ -268,6 +268,7 @@ public class MReservationPage {
         } catch (SQLException e) 
         {
             System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null, "Reservation detail already stored!", "Error", JOptionPane.ERROR_MESSAGE);
         }
         return 0;
         
@@ -465,6 +466,10 @@ public class MReservationPage {
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        }
+        catch(NumberFormatException e)
+        {
+            JOptionPane.showMessageDialog(null, "Telephone number cannot be empty", "Error!",JOptionPane.ERROR_MESSAGE);
         }
         return result;
     }
