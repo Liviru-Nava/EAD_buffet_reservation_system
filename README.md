@@ -1,7 +1,7 @@
 **BUFFET RESERVATION SYSTEM**
 
--->This project is related to buffet reservation systems visible in hotels
--->The system currently stores the information about existing buffets (Breakfast, Lunch and Dinner Buffet)
+-->This project is related to buffet reservation systems visible in hotels. 
+-->The system currently stores the information about existing buffets (Breakfast, Lunch and Dinner Buffet). 
 
 **FEATURES OF THIS PROJECT**
 - There is a login interface, for both the Admin and the Receptionist. 
