@@ -674,7 +674,14 @@ public class VReservationPage extends javax.swing.JFrame {
         String time_slot = txt_time_slot.getText();
         
         loadTableToComboBox(date_of_reservation, time_slot, number_of_guests);
-        btn_save_reservation_details.setEnabled(true);
+        if(txt_telephone_number.getText().length()<10 || txt_customer_name.getText().isEmpty() || txt_customer_email.getText().isEmpty())
+        {
+            btn_save_reservation_details.setEnabled(false);
+        }
+        else
+        {
+            btn_save_reservation_details.setEnabled(true);
+        }
     }//GEN-LAST:event_txt_number_of_guestsStateChanged
 
     private void btn_save_reservation_detailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_save_reservation_detailsActionPerformed
@@ -1147,6 +1154,7 @@ public class VReservationPage extends javax.swing.JFrame {
             if(balance < 0)
             {
                 txt_paid_amount.setBorder(BorderFactory.createLineBorder(Color.red, 2));
+                btn_paynow.setEnabled(false);
             }
             else
             {
@@ -1208,6 +1216,10 @@ public class VReservationPage extends javax.swing.JFrame {
     {
         String telephone = txt_telephone_number.getText();
         if(telephone.length() == 0)
+        {
+            btn_save_reservation_details.setEnabled(false);
+        }
+        else if(telephone.length()<10)
         {
             btn_save_reservation_details.setEnabled(false);
         }

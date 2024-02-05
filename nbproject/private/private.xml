@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/ASUS/OneDrive/Desktop/NIBM/SEMESTER%202/EAD/Activities/Buffet_Reservation_System/src/View/VForgotPassword.java</file>
             <file>file:/C:/Users/ASUS/OneDrive/Desktop/NIBM/SEMESTER%202/EAD/Activities/Buffet_Reservation_System/src/View/VCancelReservationPage.java</file>
             <file>file:/C:/Users/ASUS/OneDrive/Desktop/NIBM/SEMESTER%202/EAD/Activities/Buffet_Reservation_System/src/Model/MReservationPage.java</file>
             <file>file:/C:/Users/ASUS/OneDrive/Desktop/NIBM/SEMESTER%202/EAD/Activities/Buffet_Reservation_System/src/View/VLoginPage.java</file>
@@ -10,6 +11,7 @@
             <file>file:/C:/Users/ASUS/OneDrive/Desktop/NIBM/SEMESTER%202/EAD/Activities/Buffet_Reservation_System/src/View/VGenerateReportPage.java</file>
             <file>file:/C:/Users/ASUS/OneDrive/Desktop/NIBM/SEMESTER%202/EAD/Activities/Buffet_Reservation_System/src/View/VDashboardPage.java</file>
             <file>file:/C:/Users/ASUS/OneDrive/Desktop/NIBM/SEMESTER%202/EAD/Activities/Buffet_Reservation_System/src/View/VReservationPage.java</file>
+            <file>file:/C:/Users/ASUS/OneDrive/Desktop/NIBM/SEMESTER%202/EAD/Activities/Buffet_Reservation_System/src/Controller/CForgotPassword.java</file>
         </group>
     </open-files>
 </project-private>
